@@ -57,7 +57,7 @@ const otherProjects = [
   desc: '포폴 설명', 
   tech: ['React','bootstrap', 'netlify'],
   url: 'https://weatherapp-weathapp.netlify.app/',
-  repo: 'https://github.com/leealswl/weather-app',
+  repo: 'https://github.com/leealswl/portfolio',
  },
 ];
 
@@ -67,7 +67,7 @@ export default function ProjectsSection() {
 
   const [titleRef,   titleVisible]   = useFadeIn(0.5);
   const [mainRef,    mainVisible]    = useFadeIn(0.2);
-  const [otherRef,   otherVisible]   = useFadeIn(0.5);
+  const [otherRef]   = useFadeIn(0.5);
   const [theotherRef,   theotherVisible]   = useFadeIn(0.5);
 
   return (
