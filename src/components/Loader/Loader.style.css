@@ -1,0 +1,56 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background-color: var(--black);
+    z-index: 99;
+  }
+  
+.logo-wrapper {
+    position: relative;
+    animation: fadeInScale 2.5s ease-in-out forwards;
+  }
+  
+.loader-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.loader-circle circle {
+    stroke: var(--lightest-slate);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 1633.63; 
+    stroke-dashoffset: 1633.63;; 
+    animation: circleDraw 2.5s ease-in-out forwards;
+  }
+  
+  @keyframes circleDraw {
+    to { stroke-dashoffset: 0; }
+  }
+  
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+  }
+  
+.logo-text {
+    color: var(--lightest-slate);
+    font-size: 4rem;
+    margin: 0;
+    position: relative;
+    z-index: 1; 
+  }
