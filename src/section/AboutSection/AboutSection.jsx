@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, useTheme, useMediaQuery, Divider, Chip} from '@mui/material';
-import profilePic from '../../assets/images/profile.jpg';
+import profilePic from '../../assets/images/minji.jpg';
 import useFadeIn from '../../hooks/useFadeIn';
 import './AboutSection.style.css'
 

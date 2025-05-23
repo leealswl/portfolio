@@ -42,7 +42,7 @@ const mainProjects = [
 ];
 
 const otherProjects = [
-  { title: 'H&M APP',      
+  { title: 'H&M App',      
     desc: '백엔드 없이 JSON Server로 구축한 더미 API를 활용해 실제 쇼핑몰처럼 상품 리스트 조회, 상세 페이지, 검색을 할 수 있는 웹 어플리케이션입니다.',    
     url: 'https://new-hnm.netlify.app/',
     tech: ['React','React-Query','MUI','Netlify'],
