@@ -11,7 +11,16 @@ export const Section = styled.section`
   max-width: 1200px;
   margin: 0 auto;
 
-  /* (옵션) 각 섹션별 배경색 번갈아 적용 */
-  /* &:nth-of-type(odd) { background: #0f1624; }
-     &:nth-of-type(even) { background: #10172d; } */
+  /* 태블릿 이하 (<=960px): 좌우 패딩 좁히고 콘텐츠 중앙 정렬 */
+  @media (max-width: 960px) {
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+  }
+
+  /* 모바일 (<=600px): 네비바가 fixed 일 때 겹치지 않도록 위쪽 패딩 추가 */
+  @media (max-width: 600px) {
+    /* 예: 네비바 높이가 80px 이면, 기본 100px 대신 80px+20px 여유를 줄 수도 있고 */
+    padding-top: 100px; /* 필요하다면 80px, 120px 등으로 조절 */
+  }
 `;

@@ -38,7 +38,11 @@ export default function MainSection() {
         justifyContent: 'flex-start',    
         alignItems: 'center',        
         textAlign: 'center',
-        pt: isMobile ? '30px' : '190px',   
+        pt: {
+          xs: '80px',   
+          sm: '100px',  
+          md: '190px', 
+        },
       }}
     >
       {lines.slice(0, visibleCount).map((text, i) => (

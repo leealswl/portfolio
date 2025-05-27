@@ -10,14 +10,17 @@
   
 .logo-wrapper {
     position: relative;
+    width: clamp(200px, 50vw, 600px);
+    height: clamp(200px, 50vw, 600px);
     animation: fadeInScale 2.5s ease-in-out forwards;
   }
   
 .loader-circle {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
   }
 .loader-circle circle {
     stroke: var(--lightest-slate);
@@ -48,9 +51,13 @@
   }
   
 .logo-text {
-    color: var(--lightest-slate);
-    font-size: 4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin: 0;
-    position: relative;
-    z-index: 1; 
+    color: var(--lightest-slate);
+    font-size: clamp(1.5rem, 8vw, 4rem);
+    text-align: center;
+    white-space: nowrap;
   }
