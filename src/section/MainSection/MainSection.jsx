@@ -30,7 +30,7 @@ export default function MainSection() {
       sx={{
         position: 'relative',
         width: '100%',              
-        minHeight: '65vh',            
+        minHeight: '100vh',            
         backgroundColor: '#000',     
         color: '#fff',               
         display: 'flex',             
