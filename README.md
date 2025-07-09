@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# 민지's Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+안녕하세요! 프론트엔드 개발자 이민지의 개인 포트폴리오 웹사이트입니다.
 
-## Available Scripts
+## 프로젝트 소개
 
-In the project directory, you can run:
+본 포트폴리오는 React와 MUI(Material-UI)를 기반으로 개발된 반응형 웹 애플리케이션입니다.
+사용자 친화적인 UI/UX와 다양한 애니메이션 효과를 적용하여, 깔끔하고 현대적인 디자인을 구현하였습니다.
 
-### `yarn start`
+### 주요 기능 및 구조
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 메인 섹션(MainSection)
+인사말과 소개 문구를 순차적으로 보여주어 방문자에게 강한 첫인상을 제공합니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 네비게이션 바(Navbar)
+반응형 메뉴와 부드러운 스크롤 이동 기능이 있는 고정 상단 바입니다.
 
-### `yarn test`
+- 사이드바(Sidebar)
+Github, Velog 등 주요 소셜 링크 아이콘을 고정 위치에 배치하여 빠른 접근성을 제공합니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- About 섹션(AboutSection)
+프로필 사진과 경력, 기술 스택을 소개하며 페이드인 애니메이션 효과를 적용했습니다.
 
-### `yarn build`
+- 프로젝트 섹션(ProjectSection)
+주요 프로젝트 및 기타 프로젝트들을 이미지, 기술 스택, 링크와 함께 보여줍니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Contact 섹션(ContactSection)
+이메일과 메시지를 입력받아 구글 메일 작성 페이지로 연결하는 간단한 연락처 폼입니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- TopButton
+스크롤 시 페이지 상단으로 빠르게 이동할 수 있는 버튼입니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Loader
+초기 로딩 시 애니메이션 효과를 통해 사용자 경험을 향상시킵니다.
 
-### `yarn eject`
+### 기술 스택
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React (Functional Components, Hooks)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Material-UI (MUI)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- React Router DOM
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- react-icons
 
-## Learn More
+- Intersection Observer API (커스텀 훅 useFadeIn 활용)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CSS 애니메이션 및 커스텀 스타일링
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
