@@ -45,5 +45,5 @@
 
 - Intersection Observer API (커스텀 훅 useFadeIn 활용)
 
-CSS 애니메이션 및 커스텀 스타일링
+- CSS 애니메이션 및 커스텀 스타일링
 
