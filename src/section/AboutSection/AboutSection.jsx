@@ -8,7 +8,7 @@ import './AboutSection.style.css'
 export default function AboutSection() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const skills = ['HTML', 'CSS','JavaScript', 'React'];
+  const skills = ['HTML', 'CSS','JavaScript', 'React', 'Java'];
 
   const [titleRef,   titleVisible]   = useFadeIn(0.5);
   const [mainRef,    mainVisible]    = useFadeIn(0.2);
