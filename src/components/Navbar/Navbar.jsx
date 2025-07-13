@@ -76,15 +76,20 @@ export default function Navbar() {
           <Box sx={{ ml: 'auto', display: 'flex', gap: 2, mr: 2 }}>
             {navItems.map(item => (
               <Button
-              key={item.label}
-             onClick={() => {
-               const headerHeight = 64;                  // AppBar 높이(px)
-               scrollToSection(item.id, headerHeight);   // 부드럽게 해당 섹션으로 스크롤
-             }}
-              sx={{ color: '#fff' }}
-            >
-              {item.label}
-            </Button>
+                key={item.label}
+                onClick={() => {
+                  const headerHeight = 64;
+                  scrollToSection(item.id, headerHeight);
+                }}
+                sx={{
+                  color: '#fff',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255,255,255,0.1)',
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
             ))}
           </Box>
         )}

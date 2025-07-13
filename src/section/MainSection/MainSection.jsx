@@ -99,9 +99,10 @@ export default function MainSection() {
               cursor: 'pointer',
             }}
             onClick={() => {
-              const nextSection = document.getElementById('about');
-              if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
+    const nextSection = document.getElementById('about');
+    if (nextSection) {
+      const y = nextSection.getBoundingClientRect().top + window.pageYOffset - 10;
+      window.scrollTo({ top: y, behavior: 'smooth' });
               }
             }}
           />
