@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function MainSection() {
   const theme = useTheme();
@@ -7,14 +8,14 @@ export default function MainSection() {
 
   const lines = [
     '안녕하세요',
-    '프론트엔드 개발자 이민지입니다.',
-    'React를 중심으로 사용자 친화적인 웹을 개발하고 있습니다.',
-    '함께 성장할 수 있는 회사를 찾고 있습니다.',
+    '웹의 작은 변화도 가치 있게 만드는',
+    '프론트엔드 개발자, 이민지입니다.',
+    '작은 변화도 의미 있게 만들고 싶습니다.',
     '방문해 주셔서 감사합니다.'
   ];
 
-  const [visibleCount, setVisibleCount] = useState(2);
-
+  const [visibleCount, setVisibleCount] = useState(2); // 처음 2줄
+// visibleCount를 0.6초 간격 증가
   useEffect(() => {
     if (visibleCount < lines.length) {
       const timer = setTimeout(() => {
@@ -45,6 +46,7 @@ export default function MainSection() {
         },
       }}
     >
+      {/* visibleCount만큼 텍스트를 순서대로 출력 */}
       {lines.slice(0, visibleCount).map((text, i) => (
         <Typography
           key={i}
@@ -73,8 +75,37 @@ export default function MainSection() {
           @keyframes fadeIn {
             to { opacity: 1; }
           }
+            @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(10px);
+      }
+      60% {
+        transform: translateY(5px);
+      }
+    }
         `}
       </Box>
+        {visibleCount >= lines.length && (
+          <KeyboardArrowDownIcon
+            sx={{
+              position: 'absolute',
+              bottom: isMobile ? '20px' : '40px',
+              fontSize: isMobile ? '2.5rem' : '3rem',
+              color: '#fff',
+              animation: 'bounce 2s infinite',
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+              const nextSection = document.getElementById('about');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          />
+        )}
     </Box>
   );
 }
