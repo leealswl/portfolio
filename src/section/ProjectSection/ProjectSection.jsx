@@ -14,8 +14,16 @@ const mainProjects = [
     또한 포스터 클릭 시 해당 영화의 포스터·줄거리·출연진·트레일러·유사 영화 추천 등을 렌더링합니다.
     사용자가 선택한 장르를 기반으로 TMDB API에서 해당 장르의 영화 목록을 받아와 표시합니다.`,
     live: 'https://movie-appmovie-app.netlify.app/',
-    repo: 'https://github.com/leealswl/movie-app',
+    repo: 'https://github.com/leealswl/new_api_project',
   },
+
+  { 
+    title: 'News App', 
+    img: new URL('../../assets/images/projects-newsapp.jpg', import.meta.url).href,
+    tech: [ 'Javascript','bootstrap',  'Netlify'],
+    desc: 'newyork times API를 활용해 최신뉴스를 카테고리별로 조회할 수 있고, 검색 및 페이지네이션이 가능한 반응형 뉴스 웹 애플리케이션 입니다.', 
+    live: 'https://game-plus-minus.netlify.app/',
+    repo: 'https://github.com/leealswl/Javascript3-team2', },
   {
     title: 'Library App',
     img: new URL('../../assets/images/projects-libraryapp.jpg', import.meta.url).href,
@@ -24,13 +32,7 @@ const mainProjects = [
     live: 'https://nn-book.vercel.app/',
     repo: 'https://github.com/leealswl/nnbooks',
   },
-  { 
-    title: 'Game App', 
-    img: new URL('../../assets/images/projects-gameapp.jpg', import.meta.url).href,
-    tech: [ 'Javascript','bootstrap',  'Netlify'],
-    desc: 'RAWG game API 를 활용해 베스트게임 조회,검색, 게임 상세보기를 구현한 게임플랫폼 프로젝트 입니다.', 
-    live: 'https://game-plus-minus.netlify.app/',
-    repo: 'https://github.com/leealswl/Javascript3-team2', },
+  
     { 
     title: 'Weather App',   
     img: new URL('../../assets/images/projects-weatherapp.jpg', import.meta.url).href,
@@ -47,7 +49,7 @@ const otherProjects = [
     url: 'https://new-hnm.netlify.app/',
     tech: ['React','React-Query','MUI','Netlify'],
     repo: 'https://github.com/jh-y10/NnBook', },
-  { title: 'News API', 
+  { title: 'game app', 
   desc: 'news API를 활용해 최신뉴스를 카테고리별로 조회할 수 있고, 검색 및 페이지네이션이 가능한 반응형 뉴스 웹 애플리케이션 입니다.',         
   tech: ['Javascript','bootstrap', 'Netlify'],
   url: 'https://minji-newsapi-project.netlify.app/',
