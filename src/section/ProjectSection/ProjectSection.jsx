@@ -49,10 +49,10 @@ const otherProjects = [
     url: 'https://new-hnm.netlify.app/',
     tech: ['React','React-Query','MUI','Netlify'],
     repo: 'https://github.com/jh-y10/NnBook', },
-  { title: 'game app', 
+  { title: 'game app', //noonagame2 1234
   desc: 'news API를 활용해 최신뉴스를 카테고리별로 조회할 수 있고, 검색 및 페이지네이션이 가능한 반응형 뉴스 웹 애플리케이션 입니다.',         
   tech: ['Javascript','bootstrap', 'Netlify'],
-  url: 'https://game-plus-minus.netlify.app/',
+  url: 'https://game-plus-minus.netlify.app/', 
   repo: 'https://github.com/leealswl/Javascript3-team2', 
  },
  { title: '포트폴리오' ,   
