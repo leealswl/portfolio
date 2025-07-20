@@ -24,14 +24,14 @@ const mainProjects = [
     desc: 'news API를 활용해 최신뉴스를 카테고리별로 조회할 수 있고, 검색 및 페이지네이션이 가능한 반응형 뉴스 웹 애플리케이션 입니다.', 
     live: 'https://minji-newsapi-project.netlify.app/',
     repo: 'https://github.com/leealswl/new_api_project', },
-  {
-    title: 'Library App',
-    img: new URL('../../assets/images/projects-libraryapp.jpg', import.meta.url).href,
-    tech: ['React','React-Query', 'Aladin API','bootstrap',  'netlify'],
-    desc: 'Aladin API를 활용해 베스트셀러 조회·검색, 도서 상세 보기, 대여 기능을 구현한 React Query 기반 도서 앱입니다.',
-    live: 'https://nn-book.vercel.app/',
-    repo: 'https://github.com/leealswl/nnbooks',
-  },
+  // {
+  //   title: 'Library App',
+  //   img: new URL('../../assets/images/projects-libraryapp.jpg', import.meta.url).href,
+  //   tech: ['React','React-Query', 'Aladin API','bootstrap',  'netlify'],
+  //   desc: 'Aladin API를 활용해 베스트셀러 조회·검색, 도서 상세 보기, 대여 기능을 구현한 React Query 기반 도서 앱입니다.',
+  //   live: 'https://nn-book.vercel.app/',
+  //   repo: 'https://github.com/leealswl/nnbooks',
+  // },
   
     { 
     title: 'Weather App',   
