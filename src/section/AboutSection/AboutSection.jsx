@@ -24,7 +24,7 @@ export default function AboutSection() {
           textAlign: 'center',    
           mb: 4,                  
           fontWeight: 'bold',
-          color:'#fff,',
+          color:'#fff',
           opacity: titleVisible ? 1 : 0,
           transform: titleVisible ? 'translateY(0)' : 'translateY(20px)',
           transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',

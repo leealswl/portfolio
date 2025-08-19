@@ -1,0 +1,10 @@
+.modal-section {
+  margin-bottom: 1.5rem; 
+}
+
+.modal-section h3 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
