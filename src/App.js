@@ -7,6 +7,7 @@ import ProjectSection from './section/ProjectSection/ProjectSection';
 import ContactSection from './section/ContactSection/ContactSection';
 import Sidebar from './components/Sidebar/Sidebar';
 import TopButton from './components/TopButton';
+import SkillSection from './section/SkillSection/SkillSection';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
           <MainSection />
         <SectionWrapper id="about">
           <AboutSection />
+        </SectionWrapper>
+        <SectionWrapper id="skills">
+          <SkillSection />
         </SectionWrapper>
         <SectionWrapper id="projects">
           <ProjectSection />
