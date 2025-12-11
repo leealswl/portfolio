@@ -7,15 +7,15 @@ import './AboutSection.style.css';
 export default function AboutSection() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const skills = [
-    'HTML',
-    'CSS',
-    'JavaScript',
-    'React',
-    'Java',
-    'Spring Boot',
-    'FastAPI'
-  ];
+  // const skills = [
+  //   'HTML',
+  //   'CSS',
+  //   'JavaScript',
+  //   'React',
+  //   'Java',
+  //   'Spring Boot',
+  //   'FastAPI'
+  // ];
 
   const [titleRef, titleVisible] = useFadeIn(0.5);
   const [mainRef, mainVisible] = useFadeIn(0.2);
@@ -133,7 +133,7 @@ export default function AboutSection() {
           <Divider sx={{ borderColor: 'rgba(255,255,255,0.3)', my: 4 }} />
 
           {/* SKILL CHIPS */}
-          <Box
+          {/* <Box
             sx={{
               display: 'flex',
               flexWrap: 'wrap',
@@ -154,7 +154,7 @@ export default function AboutSection() {
                 }}
               />
             ))}
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     </>

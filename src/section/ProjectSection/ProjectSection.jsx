@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import {
   Box,
   Typography,
@@ -27,7 +27,51 @@ import {
 import useFadeIn from '../../hooks/useFadeIn';
 import './ProjectSection.style.css';
 
+import reportVideo from '../../assets/images/videos/hack.mp4';
+import agentVideo from '../../assets/images/videos/final.mp4';
+
+
+// ⭐⭐⭐ 이미지 4:3 비율 통일 스타일 (추가됨)
+const projectImageStyle = (isMobile) => ({
+  width: isMobile ? '100%' : '40%',
+  height: isMobile ? 180 : 260,
+  objectFit: 'cover',
+  borderRadius: 2,
+  cursor: 'pointer',
+  aspectRatio: '4 / 3',
+  backgroundColor: '#000',
+  transition: 'transform .2s',
+  '&:hover': { transform: 'scale(1.01)' },
+});
+
+
+// =======================
+// 메인 프로젝트 데이터
+// =======================
 const mainProjects = [
+  {
+    title: '우리동네 리포트',
+    img: new URL('../../assets/images/project-report.png', import.meta.url).href,
+    tech: ['React', 'MUI', 'Tailwind CSS'],
+    desc: `지역 주민들이 일상에서 발견한 불편 사항을 사진과 함께 신고하면,
+    AI가 내용을 자동으로 분류·요약해 담당 부서로 빠르게 전달할 수 있도록 돕는 서비스입니다.
+    사용자 흐름 설계, 신고 화면 UI, 지도 기반 위치 선택 기능 등을 구현했으며,
+    핵심 문장 추출·카테고리 자동 분류 등 AI 기반 민원 처리 효율화를 목표로 개발했습니다.`,
+    live: '',
+    repo: '',
+  },
+  {
+    title: '정부과제 컨설팅 AI AGENT',
+    img: new URL('../../assets/images/image.png', import.meta.url).href,
+    tech: ['React', 'React-Query', 'MUI', 'Spring Boot API', 'FastAPI (AI)'],
+    desc: `정부지원사업 제안서를 자동으로 분석·검증하는 AI 기반 웹 서비스입니다.
+    공고문·법령·평가기준을 분석하여 초안 문서를 자동 비교하고,
+    부족한 항목·위험요소·보완 가이드를 시각화해 제공합니다.
+    프론트엔드에서는 React 기반 대시보드, PDF 보고서 UI, 파일 업로드 흐름,
+    Spring Boot 분석 API 및 FastAPI(RAG·LLM 모델)와의 연동을 구현했습니다.`,
+    live: '',
+    repo: 'https://github.com/leealswl/final',
+  },
   {
     title: 'Movie App',
     img: new URL('../../assets/images/projects-movieapp.jpg', import.meta.url).href,
@@ -40,30 +84,18 @@ const mainProjects = [
   },
   {
     title: 'News API',
-    img: new URL('../../assets/images/projects-newsapp.jpg', import.meta.url).href, // 뉴스앱 썸네일
+    img: new URL('../../assets/images/projects-newsapp.jpg', import.meta.url).href,
     tech: ['Javascript', 'Bootstrap', 'Netlify Functions', 'NewsAPI'],
     desc: 'NewsAPI를 활용해 최신뉴스를 카테고리별로 조회하고, 검색 및 페이지네이션을 지원하는 반응형 뉴스 앱입니다.',
     live: 'https://minji-newsapi-project.netlify.app/',
     repo: 'https://github.com/leealswl/new_api_project',
   },
-    // {
-  //   title: 'Library App',
-  //   img: new URL('../../assets/images/projects-libraryapp.jpg', import.meta.url).href,
-  //   tech: ['React', 'React-Query', 'Aladin API', 'Bootstrap', 'Netlify'],
-  //   desc: 'Aladin API를 활용해 베스트셀러 조회·검색, 도서 상세 보기, 대여 기능을 구현한 React Query 기반 도서 앱입니다.',
-  //   live: 'https://nn-book.vercel.app/',
-  //   repo: 'https://github.com/leealswl/nnbooks',
-  // },
-  {
-    title: 'Weather App',
-    img: new URL('../../assets/images/projects-weatherapp.jpg', import.meta.url).href,
-    tech: ['React', 'React-Query', 'Bootstrap', 'Netlify'],
-    desc: 'OpenWeatherMap API 사용하여 현재 위치/나라 기반으로 실시간 날씨를 보여주는 웹 애플리케이션입니다.',
-    live: 'https://weatherapp-weathapp.netlify.app/',
-    repo: 'https://github.com/leealswl/weather-app',
-  },
 ];
 
+
+// =======================
+// 기타 프로젝트 데이터
+// =======================
 const otherProjects = [
   {
     title: 'H&M App',
@@ -73,259 +105,240 @@ const otherProjects = [
     repo: 'https://github.com/jh-y10/NnBook',
   },
   {
-    title: 'Game App', // Other Projects
-    desc: 'RAWG game API 를 활용해 베스트게임 조회·검색·상세보기를 구현한 게임 플랫폼 프로젝트입니다. (팀 프로젝트)',
+    title: 'Game App',
+    desc: 'RAWG game API 를 활용해 베스트게임 조회·검색·상세보기를 구현한 게임 플랫폼 프로젝트입니다.',
     url: 'https://game-plus-minus.netlify.app/',
     tech: ['Javascript', 'Bootstrap', 'Netlify'],
     repo: 'https://github.com/leealswl/Javascript3-team2',
   },
   {
     title: '포트폴리오',
-    desc: '지금까지 쌓아온 프론트엔드 역량을 보여주는 반응형 포트폴리오입니다.. 섹션 애니메이션, 프로젝트 모달, 배포 자동화 등을 포함합니다.',
+    desc: 'React + MUI 기반 개인 포트폴리오 웹사이트입니다.',
     tech: ['React', 'MUI', 'Netlify'],
     url: 'https://minzportfolio.netlify.app/',
     repo: 'https://github.com/leealswl/portfolio',
   },
 ];
 
-/** 모달 내용(아이콘 + 텍스트) */
+
+// =======================
+// 모달 데이터
+// =======================
 const modalContentByTitle = {
-  // 메인 3개
-  '🎬 Movie App': {
-    key: 'Movie App',
+  '📍 우리동네 리포트': {
+    key: '우리동네 리포트',
+    video: reportVideo, // ⭐ 영상 추가
     overview:
-      'TMDB API를 활용해 영화 정보를 제공하는 React 기반 웹 애플리케이션입니다. 인기 영화, 평점순, 상영 예정작 등 다양한 조건으로 영화를 조회할 수 있으며, 각 영화의 상세 페이지에서는 포스터, 줄거리, 출연진, 예고편 영상, 유사 영화 추천까지 확인할 수 있습니다.',
+      '사용자가 동네에서 발견한 불편사항을 사진과 함께 신고하면, AI가 내용을 자동 분류·요약하여 담당 부서로 전달하도록 돕는 서비스입니다.',
     features: [
-      '인기순, 평점순, 상영 예정작 영화 목록 제공',
-      '포스터 클릭 시 상세 페이지 → 줄거리, 출연진, 트레일러, 영화 리뷰, 유사 영화 추천',
-      '장르별 영화 필터링 및 검색 기능',
-      '반응형 UI 지원',
+      '사진 기반 민원 신고',
+      'AI 요약/카테고리 자동 분류',
+      '지도 기반 위치 선택',
+      '신고 상세 보기',
+      '담당 부서 자동 추천',
     ],
     role: [
-      'React Query로 API 연동 및 데이터 상태 관리 (로딩·에러 처리 포함)',
-      '상세 모달/페이지 UI 구현 및 사용자 경험 개선',
-      '검색·필터링 로직 작성',
+      '신고 UI 개발',
+      'Kakao Maps 위치 선택 기능',
+      'AI 결과 시각화 UI 개발',
+      'UX 흐름 설계',
+      '반응형 UI + 모달 구성',
     ],
+    tech: ['React', 'MUI', 'Tailwind CSS', 'React Query', 'Kakao Maps JS', 'OpenAI API'],
+    learned: [
+      '실사용 시나리오 기반 UX 설계',
+      '이미지 업로드/전처리 경험',
+      '지도 기반 UI 경험',
+      'AI 출력 UX 반영 경험',
+    ],
+    links: { repo: '', live: '' }
+  },
+
+  '🤖 정부과제 컨설팅 AI AGENT': {
+    key: '정부과제 컨설팅 AI AGENT',
+    video: agentVideo, // ⭐ 영상 추가
+    overview:
+      '정부지원사업 제안서를 자동 분석·검증하는 AI 기반 플랫폼입니다.',
+    features: [
+      '공고문 자동 파싱',
+      '초안–공고 비교',
+      '법령 RAG 검증',
+      '평가기준 자가진단',
+      '대시보드 시각화',
+      'PDF 보고서 다운로드',
+    ],
+    role: [
+      '대시보드 전체 UI 개발',
+      'Spring Boot + FastAPI 연동',
+      'React Query 데이터 흐름 구성',
+      '분석 결과 시각화 컴포넌트 개발',
+      '파일 업로드/저장 시스템 설계',
+      'PDF export 기능 개발',
+    ],
+    tech: [
+      'React', 'React Query', 'Zustand', 'MUI',
+      'Spring Boot', 'FastAPI', 'LangGraph',
+      'OpenAI API', 'Chroma DB', 'html2canvas', 'jsPDF'
+    ],
+    learned: [
+      '대규모 분석 UI 설계 능력 향상',
+      'Spring + FastAPI 멀티 백엔드 구조 이해',
+      'RAG 검증 파이프라인 시각화 경험',
+      'PDF 렌더링/보고서 구성 능력 강화',
+    ],
+    links: { repo: 'https://github.com/leealswl/final', live: '' },
+  },
+
+  '🎬 Movie App': {
+    key: 'Movie App',
+    overview: 'TMDB 영화 정보 제공 웹앱입니다.',
+    features: ['인기/평점/예정작', '상세페이지', '트레일러', '장르 필터'],
+    role: ['API 상태 관리', '상세 UI 개발', '검색/필터 개발'],
     tech: ['React', 'React Query', 'TMDB API', 'Bootstrap', 'Netlify'],
+    learned: ['API 캐싱 구조 이해', 'UI 구성 능력 향상'],
     links: {
       repo: 'https://github.com/leealswl/movie-app',
       live: 'https://movie-appmovie-app.netlify.app/',
-    },
-  },
-  '📰 News API': {
-    key: 'News API',
-    overview:
-      'NewsAPI를 활용해 최신 뉴스를 조회할 수 있는 웹 애플리케이션입니다. 카테고리별/키워드별 검색, 페이지네이션 기능을 지원하며 Netlify Functions로 배포 시 CORS 이슈를 해결했습니다.',
-    features: [
-      '카테고리별 뉴스 조회 (정치, 경제, 스포츠 등)',
-      '키워드 검색 지원',
-      '뉴스 목록 페이지네이션',
-      '기사 클릭 시 원문 링크로 이동',
-      '모바일 대응(반응형 UI)',
-    ],
-    role: [
-      'NewsAPI 연동 및 데이터 렌더링 구현',
-      '페이지네이션 로직 설계 및 구현',
-      '카테고리 메뉴 / 검색 기능 UI 구성',
-      'Netlify Functions로 서버리스 배포 및 CORS 에러 우회 처리',
-    ],
-    tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'NewsAPI', 'Serverless Functions'],
-    links: {
-      repo: 'https://github.com/leealswl/new_api_project',
-      live: 'https://minji-newsapi-project.netlify.app/',
-    },
-  },
-  '☁️ Weather App': {
-    key: 'Weather App',
-    overview:
-      'OpenWeatherMap API 기반 실시간 날씨 앱입니다. 현재 위치/국가·도시별 검색을 지원하는 반응형 웹 애플리케이션입니다.',
-    features: ['현재 위치 기반 날씨', '도시/국가 검색', '온도·습도·체감온도 등 상세 표시', '반응형 UI'],
-    role: ['React로 UI 개발', 'React Query로 데이터/로딩/에러 상태 관리', 'API 응답 데이터 매핑 및 단위 변환'],
-    tech: ['React', 'React Query', 'OpenWeatherMap API', 'Bootstrap', 'Netlify'],
-    links: {
-      repo: 'https://github.com/leealswl/weather-app',
-      live: 'https://weatherapp-weathapp.netlify.app/',
-    },
+    }
   },
 
-  // Other Projects 3개
-  '🛍 H&M App': {
-    key: 'H&M App',
-    overview:
-      'JSON Server로 만든 더미 API를 사용해 쇼핑몰의 핵심 흐름(리스트 → 상세 → 검색)을 구현한 프론트엔드 앱입니다.',
-    features: ['상품 리스트/상세', '이름/키워드 검색', '반응형 UI', '더미 API(JSON Server) 연동'],
-    role: ['컴포넌트 구조 설계', '리스트/검색/상세 화면 개발', 'MUI 기반 UI 구축', '배포 설정(Netlify)'],
-    tech: ['React', 'React Query', 'MUI', 'JSON Server', 'Netlify'],
+  '📰 News API': {
+    key: 'News API',
+    overview: '최신 뉴스 조회 웹앱입니다.',
+    features: ['카테고리별 뉴스', '검색', '페이지네이션', '반응형 UI'],
+    role: ['API 연동', '페이지네이션 개발', '서버리스 CORS 처리'],
+    tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+    learned: ['서버리스 보안 처리 경험'],
     links: {
-      repo: 'https://github.com/jh-y10/NnBook',
-      live: 'https://new-hnm.netlify.app/',
-    },
-  },
-  '🎮 Game App': {
-    key: 'Game App',
-    overview:
-      'RAWG 게임 API를 사용하여 인기 게임 목록, 검색, 상세 보기를 제공하는 팀 프로젝트입니다.',
-    features: ['인기 게임 목록', '검색/필터', '게임 상세(설명·이미지 등)', '반응형 레이아웃'],
-    role: [
-      '팀 프로젝트로 카드 UI/목록-상세 흐름 구현에 기여',
-      'API 연동 및 데이터 렌더링',
-      '레이아웃/반응형 스타일 작업',
-    ],
-    tech: ['JavaScript', 'Bootstrap', 'RAWG API', 'Netlify'],
-    links: {
-      repo: 'https://github.com/leealswl/Javascript3-team2',
-      live: 'https://game-plus-minus.netlify.app/',
-    },
-  },
-  '🗂 포트폴리오': {
-    key: '포트폴리오',
-    overview:
-      'React + MUI 기반 개인 포트폴리오입니다. 지금까지 배운내용을 녹여낸 프로젝트입니다.',
-    features: ['섹션 네비게이션', '페이드인 애니메이션', '프로젝트 모달', '반응형 UI', '배포 자동화'],
-    role: ['전체 설계 및 개발', '애니메이션/모달 UX 구현', 'Netlify 배포/환경 구성'],
-    tech: ['React', 'MUI', 'Netlify'],
-    links: {
-      repo: 'https://github.com/leealswl/portfolio',
+      repo: 'https://github.com/leealswl/new_api_project',
       live: 'https://minzportfolio.netlify.app/',
-    },
+    }
   },
 };
 
-// 타이틀 → 이모지 포함 키로 매핑
+
+// =======================
+// 제목 → 모달 키 매핑
+// =======================
 const getEmojiTitleKey = (title) => {
   switch (title) {
+    case '우리동네 리포트':
+      return '📍 우리동네 리포트';
+    case '정부과제 컨설팅 AI AGENT':
+      return '🤖 정부과제 컨설팅 AI AGENT';
     case 'Movie App':
       return '🎬 Movie App';
     case 'News API':
       return '📰 News API';
-    case 'Weather App':
-      return '☁️ Weather App';
-    case 'H&M App':
-      return '🛍 H&M App';
-    case 'Game App':
-      return '🎮 Game App';
-    case '포트폴리오':
-      return '🗂 포트폴리오';
     default:
       return null;
   }
 };
 
+
+// =======================
+// 프로젝트 모달
+// =======================
 function ProjectModal({ open, onClose, project }) {
   if (!project) return null;
 
   const emojiTitleKey = getEmojiTitleKey(project.title);
-  const content = emojiTitleKey ? modalContentByTitle[emojiTitleKey] : null;
+  const content = modalContentByTitle[emojiTitleKey];
+
   if (!content) return null;
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-      <DialogTitle sx={{ fontWeight: 700 }}>{emojiTitleKey}</DialogTitle>
+      <DialogTitle>{emojiTitleKey}</DialogTitle>
 
       <DialogContent dividers>
-        {/* 프로젝트 개요 */}
+
+        {/* ⭐ 영상 영역 */}
+        {content.video && (
+          <div
+            className="modal-section"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "20px",
+            }}
+          >
+            <video
+              src={content.video}
+              controls
+              style={{
+                width: "70%",
+                maxWidth: "480px",
+                borderRadius: "8px",
+              }}
+            />
+          </div>
+        )}
         <div className="modal-section">
-          <h3>
-            <FaInfoCircle /> 프로젝트 개요
-          </h3>
-          <p className="modal-paragraph">{content.overview}</p>
+          <h3><FaInfoCircle /> 프로젝트 개요</h3>
+          <p>{content.overview}</p>
         </div>
 
-        {/* 주요 기능 */}
         <div className="modal-section">
-          <h3>
-            <FaStar /> 주요 기능
-          </h3>
-          <ul className="modal-list">
-            {content.features.map((f, i) => (
-              <li key={i}>{f}</li>
-            ))}
+          <h3><FaStar /> 주요 기능</h3>
+          <ul>
+            {content.features.map((f, i) => <li key={i}>{f}</li>)}
           </ul>
         </div>
 
-        {/* 내 역할 */}
         <div className="modal-section">
-          <h3>
-            <FaUserCog /> 내 역할
-          </h3>
-          <ul className="modal-list">
-            {content.role.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
+          <h3><FaUserCog /> 내 역할</h3>
+          <ul>
+            {content.role.map((r, i) => <li key={i}>{r}</li>)}
           </ul>
         </div>
 
-        {/* 기술 스택 */}
         <div className="modal-section">
-          <h3>
-            <FaTools /> 기술 스택
-          </h3>
+          <h3><FaTools /> 기술 스택</h3>
           <div className="modal-chip-row">
-            {content.tech.map((t) => (
-              <Chip key={t} label={t} size="small" variant="outlined" />
-            ))}
+            {content.tech.map((t) => <Chip key={t} label={t} variant="outlined" size="small" />)}
           </div>
         </div>
 
-        {/* 배운 점 (있는 프로젝트만 노출) */}
-        {['Movie App', 'News API', 'Weather App'].includes(content.key) && (
+        {content.learned && (
           <div className="modal-section">
-            <h3>
-              <FaLightbulb /> 배운 점
-            </h3>
-            <ul className="modal-list">
-              {content.key === 'Movie App' && (
-                <>
-                  <li>React Query 기반 API 상태 관리 및 캐싱 경험</li>
-                  <li>외부 API 데이터를 구조화해 UI에 반영하는 과정 학습</li>
-                  <li>모달 기반 UI/UX 설계 및 사용자 경험 향상</li>
-                </>
-              )}
-              {content.key === 'News API' && (
-                <>
-                  <li>외부 API 연동 시 CORS 문제를 서버리스 함수로 해결</li>
-                  <li>페이지네이션 로직 설계를 통해 데이터 UI 최적화</li>
-                  <li>배포 환경에서의 API Key 관리 및 보안 고려</li>
-                </>
-              )}
-              {content.key === 'Weather App' && (
-                <>
-                  <li>위치 기반 데이터 처리 및 로딩/에러 상태 관리</li>
-                  <li>반응형 UI와 날씨 데이터 매핑(단위 변환) 최적화</li>
-                </>
-              )}
+            <h3><FaLightbulb /> 배운 점</h3>
+            <ul>
+              {content.learned.map((l, i) => <li key={i}>{l}</li>)}
             </ul>
           </div>
         )}
       </DialogContent>
 
       <DialogActions>
-        <Button
-          component={Link}
-          href={content.links?.repo || project.repo}
-          target="_blank"
-          rel="noopener"
-          sx={{ textTransform: 'none' }}
-        >
-          <FaGithub style={{ marginRight: 6 }} />
-          GitHub
-        </Button>
-        <Button
-          component={Link}
-          href={content.links?.live || content.links?.url || project.live || project.url}
-          target="_blank"
-          rel="noopener"
-          sx={{ textTransform: 'none' }}
-        >
-          <FaExternalLinkAlt style={{ marginRight: 6 }} />
-          Live
-        </Button>
+        {content.links.repo && (
+          <Button
+            component={Link}
+            href={content.links.repo}
+            target="_blank"
+          >
+            <FaGithub /> GitHub
+          </Button>
+        )}
+        {content.links.live && (
+          <Button
+            component={Link}
+            href={content.links.live}
+            target="_blank"
+          >
+            <FaExternalLinkAlt /> Live
+          </Button>
+        )}
         <Button onClick={onClose}>닫기</Button>
       </DialogActions>
     </Dialog>
   );
 }
 
+
+// =======================
+// 메인 컴포넌트
+// =======================
 export default function ProjectsSection() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -335,7 +348,6 @@ export default function ProjectsSection() {
   const [otherRef] = useFadeIn(0.5);
   const [theotherRef, theotherVisible] = useFadeIn(0.5);
 
-  // 모달 상태
   const [open, setOpen] = React.useState(false);
   const [selectedProject, setSelectedProject] = React.useState(null);
 
@@ -354,20 +366,18 @@ export default function ProjectsSection() {
 
   return (
     <SectionWrapper>
+      {/* Title */}
       <Typography
         ref={titleRef}
         variant={isMobile ? 'h4' : 'h3'}
-        component="h2"
-        gutterBottom
         sx={{
           textAlign: 'center',
           color: '#fff',
           fontWeight: 'bold',
           mb: 3,
-          pt: 0,
           opacity: titleVisible ? 1 : 0,
           transform: titleVisible ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+          transition: '.5s',
         }}
       >
         PROJECTS
@@ -378,16 +388,14 @@ export default function ProjectsSection() {
         ref={mainRef}
         sx={{
           display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          gap: 4,
-          justifyContent: 'center',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
+          gap: 12,
           maxWidth: 1000,
           mx: 'auto',
           px: 2,
           opacity: mainVisible ? 1 : 0,
           transform: mainVisible ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+          transition: '.5s',
         }}
       >
         {mainProjects.map((p) => (
@@ -397,40 +405,36 @@ export default function ProjectsSection() {
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
               gap: 10,
-              mb: 8,
-              width: '100%',
             }}
           >
+
+            {/* ⭐⭐⭐ 이미지 통일 적용됨 */}
             <Box
               component="img"
               src={p.img}
               alt={p.title}
               onClick={() => openModalFor(p)}
-              sx={{
-                width: isMobile ? '100%' : '40%',
-                height: isMobile ? 150 : 250,
-                objectFit: 'cover',
-                borderRadius: 2,
-                cursor: 'pointer',
-                transition: 'transform .2s ease',
-                '&:hover': { transform: 'scale(1.01)' },
-              }}
+              sx={projectImageStyle(isMobile)}
             />
+
             <Box sx={{ p: 3, color: '#fff' }}>
-              <Typography variant="h5" gutterBottom>
-                {p.title}
-              </Typography>
-              <Typography variant="body2" paragraph>
-                {p.desc}
-              </Typography>
+              <Typography variant="h5">{p.title}</Typography>
+              <Typography variant="body2" paragraph>{p.desc}</Typography>
+
               <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-                <Link href={p.repo} target="_blank" color="inherit">
-                  <FaGithub size={30} />
-                </Link>
-                <Link href={p.live} target="_blank" color="inherit">
-                  <FaExternalLinkAlt size={30} />
-                </Link>
+                {p.repo && (
+                  <Link href={p.repo} target="_blank" color="inherit">
+                    <FaGithub size={30} />
+                  </Link>
+                )}
+
+                {p.live && (
+                  <Link href={p.live} target="_blank" color="inherit">
+                    <FaExternalLinkAlt size={30} />
+                  </Link>
+                )}
               </Box>
+
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {p.tech.map((t) => (
                   <Typography
@@ -438,11 +442,9 @@ export default function ProjectsSection() {
                     variant="caption"
                     sx={{
                       px: 1,
-                      py: 0.5,
-                      border: '1px solid',
-                      borderColor: '#fff',
+                      py: .5,
+                      border: '1px solid #fff',
                       borderRadius: 1,
-                      fontSize: '0.75rem',
                     }}
                   >
                     {t}
@@ -454,8 +456,10 @@ export default function ProjectsSection() {
         ))}
       </Box>
 
+      {/* Divider */}
+      <Divider sx={{ borderColor: 'rgba(255,255,255,.3)', my: 5 }} />
+
       {/* Other Projects */}
-      <Divider sx={{ borderColor: 'rgba(255,255,255,0.3)', my: 3 }} />
       <Typography
         ref={otherRef}
         variant="h4"
@@ -465,7 +469,7 @@ export default function ProjectsSection() {
           mb: 4,
           opacity: theotherVisible ? 1 : 0,
           transform: theotherVisible ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.2s ease-out, transform 0.2s ease-out',
+          transition: '.3s',
         }}
       >
         Other Projects
@@ -479,7 +483,7 @@ export default function ProjectsSection() {
           gap: 3,
           opacity: theotherVisible ? 1 : 0,
           transform: theotherVisible ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.2s ease-out, transform 0.2s ease-out',
+          transition: '.3s',
         }}
       >
         {otherProjects.map((o) => (
@@ -491,55 +495,49 @@ export default function ProjectsSection() {
               p: 3,
               borderRadius: 2,
               color: '#fff',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 1.5,
-              height: '100%',
               cursor: 'pointer',
-              transition: 'transform .2s ease',
+              transition: '.2s',
               '&:hover': { transform: 'translateY(-2px)' },
             }}
           >
             <FaFolder size={24} />
             <Typography variant="subtitle1">{o.title}</Typography>
-            <Typography variant="body2" sx={{ flex: 1, color: '#ccc' }}>
-              {o.desc}
-            </Typography>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {o.tech.map((tech) => (
+            <Typography variant="body2" sx={{ color: '#ccc' }}>{o.desc}</Typography>
+
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
+              {o.tech.map((t) => (
                 <Typography
-                  key={tech}
+                  key={t}
                   variant="caption"
                   sx={{
                     px: 1,
-                    py: 0.5,
-                    border: '1px solid',
-                    borderColor: '#fff',
+                    py: .5,
+                    border: '1px solid #fff',
                     borderRadius: 1,
-                    fontSize: '0.75rem',
                   }}
                 >
-                  {tech}
+                  {t}
                 </Typography>
               ))}
             </Box>
-            <Box sx={{ mt: 2, display: 'flex', gap: 2 }}>
+
+            <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
               {o.repo && (
                 <Link
                   href={o.repo}
                   target="_blank"
-                  color="inherit"
                   onClick={(e) => e.stopPropagation()}
+                  color="inherit"
                 >
                   <FaGithub />
                 </Link>
               )}
-              {(o.url) && (
+              {o.url && (
                 <Link
                   href={o.url}
                   target="_blank"
-                  color="inherit"
                   onClick={(e) => e.stopPropagation()}
+                  color="inherit"
                 >
                   <FaExternalLinkAlt />
                 </Link>
@@ -549,7 +547,7 @@ export default function ProjectsSection() {
         ))}
       </Box>
 
-      {/* 공통 모달 */}
+      {/* Modal */}
       <ProjectModal open={open} onClose={handleClose} project={selectedProject} />
     </SectionWrapper>
   );

@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Loader from './components/Loader/Loader';
-import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { HelmetProvider } from 'react-helmet-async';
+import App from './App.jsx';
+import Loader from './components/Loader/Loader';
+import './index.css';
 
 function Root() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,14 +16,18 @@ function Root() {
   );
 }
 
-root.render(
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Root container missing');
+}
+
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <HelmetProvider>
-    <BrowserRouter> 
-    <Root />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>
 );
-
-reportWebVitals();

@@ -19,7 +19,7 @@ export default function SkillsPage() {
     ];
 
     const tools = [
-        "Git", "GitHub", "Figma", "VS Code", "Netlify", "Vercel"
+        "Git", "GitHub", "Figma", "VS Code", "Netlify",
     ];
 
     return (
