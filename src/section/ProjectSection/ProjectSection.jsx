@@ -27,10 +27,6 @@ import {
 import useFadeIn from '../../hooks/useFadeIn';
 import './ProjectSection.style.css';
 
-// import reportVideo from '../../assets/images/videos/hack.mp4';
-// import agentVideo from '../../assets/images/videos/final.mp4';
-
-
 // ⭐⭐⭐ 이미지 4:3 비율 통일 스타일 (추가됨)
 const projectImageStyle = (isMobile) => ({
   width: isMobile ? '100%' : '40%',
@@ -127,8 +123,11 @@ const otherProjects = [
 const modalContentByTitle = {
   '📍 우리동네 리포트': {
     key: '우리동네 리포트',
-    video: "/videos/hack.mp4",
- // ⭐ 영상 추가
+
+    // ✅ 로컬 영상은 video 태그로
+    videoType: 'video',
+    videoSrc: '/videos/hack.mp4',
+
     overview:
       '사용자가 동네에서 발견한 불편사항을 사진과 함께 신고하면, AI가 내용을 자동 분류·요약하여 담당 부서로 전달하도록 돕는 서비스입니다.',
     features: [
@@ -156,8 +155,11 @@ const modalContentByTitle = {
 
   '🤖 정부과제 컨설팅 AI AGENT': {
     key: '정부과제 컨설팅 AI AGENT',
-    video: "https://drive.google.com/uc?export=download&id=1XjRIdF22A7Z9Ov4KwpueMdDWe3IYFfa8",
- // ⭐ 영상 추가
+
+    // ✅ 구글드라이브는 video 태그로 잘 안되므로 iframe preview로
+    videoType: 'iframe',
+    videoSrc: 'https://drive.google.com/file/d/1XjRIdF22A7Z9Ov4KwpueMdDWe3IYFfa8/preview',
+
     overview:
       '정부지원사업 제안서를 자동 분석·검증하는 AI 기반 플랫폼입니다.',
     features: [
@@ -255,7 +257,7 @@ function ProjectModal({ open, onClose, project }) {
       <DialogContent dividers>
 
         {/* ⭐ 영상 영역 */}
-        {content.video && (
+        {(content.videoType && content.videoSrc) && (
           <div
             className="modal-section"
             style={{
@@ -264,17 +266,41 @@ function ProjectModal({ open, onClose, project }) {
               marginBottom: "20px",
             }}
           >
-            <video
-              src={content.video}
-              controls
-              style={{
-                width: "70%",
-                maxWidth: "480px",
-                borderRadius: "8px",
-              }}
-            />
+            {content.videoType === 'video' && (
+              <video
+                src={content.videoSrc}
+                controls
+                muted
+                playsInline
+                preload="metadata"
+                style={{
+                  width: "70%",
+                  maxWidth: "480px",
+                  borderRadius: "8px",
+                  backgroundColor: "#000",
+                }}
+              />
+            )}
+
+            {content.videoType === 'iframe' && (
+              <iframe
+                src={content.videoSrc}
+                width="480"
+                height="270"
+                allow="autoplay"
+                style={{
+                  border: "none",
+                  borderRadius: "8px",
+                  backgroundColor: "#000",
+                  width: "70%",
+                  maxWidth: "480px",
+                }}
+                title={`${content.key}-video`}
+              />
+            )}
           </div>
         )}
+
         <div className="modal-section">
           <h3><FaInfoCircle /> 프로젝트 개요</h3>
           <p>{content.overview}</p>
