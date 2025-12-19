@@ -156,7 +156,7 @@ const modalContentByTitle = {
 
   '🤖 정부과제 컨설팅 AI AGENT': {
     key: '정부과제 컨설팅 AI AGENT',
-    video: "/videos/final.mp4",
+    video: "https://drive.google.com/uc?export=download&id=1XjRIdF22A7Z9Ov4KwpueMdDWe3IYFfa8",
  // ⭐ 영상 추가
     overview:
       '정부지원사업 제안서를 자동 분석·검증하는 AI 기반 플랫폼입니다.',
