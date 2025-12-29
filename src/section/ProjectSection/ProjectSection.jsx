@@ -83,7 +83,7 @@ const mainProjects = [
     img: new URL('../../assets/images/projects-newsapp.jpg', import.meta.url).href,
     tech: ['Javascript', 'Bootstrap', 'Netlify Functions', 'NewsAPI'],
     desc: 'NewsAPI를 활용해 최신뉴스를 카테고리별로 조회하고, 검색 및 페이지네이션을 지원하는 반응형 뉴스 앱입니다.',
-    live: 'https://minji-newsapi-project.netlify.app/',
+    live: 'https://minji-newsapi-project.netlify.app',
     repo: 'https://github.com/leealswl/new_api_project',
   },
 ];
@@ -214,7 +214,7 @@ const modalContentByTitle = {
     learned: ['서버리스 보안 처리 경험'],
     links: {
       repo: 'https://github.com/leealswl/new_api_project',
-      live: 'https://minzportfolio.netlify.app/',
+      live: 'https://minji-newsapi-project.netlify.app/',
     }
   },
 };
