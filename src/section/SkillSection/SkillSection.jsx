@@ -26,7 +26,7 @@ export default function SkillsPage() {
         <Box
         sx={{
             width: "100%",
-            minHeight: "100vh",
+            minHeight: "auto",
             bgcolor: "#0f0f0f",
             py: 8,
         }}
